@@ -1,5 +1,5 @@
-const Casino = artifacts.require("Casino");
+const AavePool = artifacts.require("AavePool");
 
 module.exports = function(deployer) {
-  deployer.deploy(Casino);
+  deployer.deploy(AavePool);
 };
