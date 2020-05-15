@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.7;
 
 
 
@@ -27,6 +27,26 @@ contract LendingPoolInterface {
 contract ATokenInterface {
      function redirectInterestStream(address _to) external;
 }
+
+// For depositing via Pods
+contract PodInterface {
+    function deposit(uint256 amount, bytes calldata data) external;
+}
+
+contract PoolInterface {
+    // For Checking the winner
+     function getDraw(uint256 _drawId) external view returns (
+     uint256 feeFraction,
+     address feeBeneficiary,
+     uint256 openedBlock,
+     bytes32 secretHash,
+     bytes32 entropy,
+     address winner,
+     uint256 netWinnings,
+     uint256 fee
+  );
+}
+
 
 contract DSMath {
 
@@ -62,11 +82,24 @@ contract Helper is DSMath {
     function getLendingPool() public pure returns (address lendingpool) {
         lendingpool = 0x398eC7346DcD622eDc5ae82352F02bE94C62d119;
     }
-     /**
-     * @dev get pool contract address 
+    /**
+     * @dev get dai pod contract address 
      */
-    function getPoolBase() public pure returns (address poolToken) {
-        poolToken = 0x29fe7D60DdF151E5b52e5FAB4f1325da6b2bD958;
+    function getDaiPod() public pure returns (address daiPod) {
+        daiPod = 0x9F4C5D8d9BE360DF36E67F52aE55C1B137B4d0C4;
+    }
+    /**
+     * @dev get usdc pod contract address 
+     */
+    function getUsdcPod() public pure returns (address usdcPod) {
+        usdcPod = 0x6F5587E191C8b222F634C78111F97c4851663ba4;
+    }
+     /**
+     * @dev get intermediatecontract contract address to which we will redirect interest to  
+     */
+    function getIntermediate() public pure returns (address secondary) {
+        // dummy address used will have to deploy and replace the actual address
+        secondary = 0x6F5587E191C8b222F634C78111F97c4851663ba4;
     }
 }
 
@@ -142,26 +175,35 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-contract AavePool is Helper {
-    
+contract InvestPoolTogether  {
+    function depositPod(address pod, uint amount, bytes memory data) public {
+        PodInterface(pod).deposit(amount, data);
+    }
+}
+
+contract AavePool is InvestPoolTogether, Helper {
      /**
-     * @dev Pool Together Pool Entering Functionality through Redirecting Interest from Aave
+     * @dev Pool Together Pod Entering Functionality through Redirecting Interest from Aave
      * @param token - token to deposit
      * @param depositAmt - amount to deposit on AAVE
      */
-    function addPool(
+    function investInPod(
         address token,
-        uint depositAmt
+        uint depositAmt,
+        address pod,
+        bytes memory data
         ) public
+        returns(bool)
         {
             // Depositing Token on Aave to get AToken
             LendingPoolInterface(getLendingPool()).deposit.value(0)(token, depositAmt, 0);
             // Fetching the ATOKEN Address from the reserve address
             (, , , , , , , , , , , address atoken,) = LendingPoolInterface(getLendingPool()).getReserveData(msg.sender);
             // Redirtecting Interest to Enter into a Pool
-            // Right Now Using Pool Dai Address will have to add condition based on the reserve token whether to redirect token to Pool Dai or Pool Usdc
-            ATokenInterface(atoken).redirectInterestStream(getPoolBase());
+            // Right Now Using Using a sample address in getIntermediate but we will basically first deploy InvestPoolTogether and put that address in there 
+            ATokenInterface(atoken).redirectInterestStream(getIntermediate());
+            depositPod(pod, depositAmt, data);
+            return true;
         }
-        
 }
 
