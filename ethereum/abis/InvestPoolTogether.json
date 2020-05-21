@@ -1,64 +1,35 @@
 {
-  "contractName": "Helper",
+  "contractName": "InvestPoolTogether",
   "abi": [
     {
-      "inputs": [],
-      "name": "getLendingPool",
-      "outputs": [
+      "inputs": [
         {
           "internalType": "address",
-          "name": "lendingpool",
+          "name": "pod",
           "type": "address"
-        }
-      ],
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getDaiPod",
-      "outputs": [
+        },
         {
-          "internalType": "address",
-          "name": "daiPod",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getUsdcPod",
-      "outputs": [
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
         {
-          "internalType": "address",
-          "name": "usdcPod",
-          "type": "address"
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
         }
       ],
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getIntermediate",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "secondary",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "pure",
+      "name": "depositPod",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getDaiPod\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"daiPod\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIntermediate\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"secondary\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLendingPool\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"lendingpool\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUsdcPod\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"usdcPod\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"getDaiPod()\":{\"details\":\"get dai pod contract address\"},\"getIntermediate()\":{\"details\":\"get intermediatecontract contract address to which we will redirect interest to\"},\"getLendingPool()\":{\"details\":\"get Lending Pool address\"},\"getUsdcPod()\":{\"details\":\"get usdc pod contract address\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/AavePool.sol\":\"Helper\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/AavePool.sol\":{\"keccak256\":\"0xecd1f993311809b8982c488155f4fecf0f19b5495caceac4856f80550ae0cd67\",\"urls\":[\"bzz-raw://f9136f0aba6bfe81bc6191913fc2688f7b2844e1ef53df731bb9a21830037e67\",\"dweb:/ipfs/QmV7uQg7Eg6DGrF59z5ekyRitp1NkgJWoR2XdoRVKa8AUU\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol\":{\"keccak256\":\"0xcdfdc2accb3dc12c6d58c6edf3e6d5239a3c6361290aff1115ad72a0e490a4f6\",\"urls\":[\"bzz-raw://467c6e66734225f86565abbe25e2e3e2fc2b9c59edf9835582f0d109c71ed413\",\"dweb:/ipfs/QmP9efZJmwTzPkA4ph3iVRmpjdnWUQTDwvJSS3EyiQJqUi\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IPod.sol\":{\"keccak256\":\"0x8cec3f250ed2c954c3e9f13cbffa9f004bf0477713a5d7c3da029f97290e9e7e\",\"urls\":[\"bzz-raw://a5444ed33ab6bd1a0c7ff5687a767651adcbd05aafaed2ec85a11f228e788338\",\"dweb:/ipfs/QmPfuiJRSxH1yZmjRgpdkUKEQY4kTT7p1uX7GzkCfGwJJv\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IPool.sol\":{\"keccak256\":\"0xf6af2f7e5a7625c37272d0be7b5c0db8e8c9271f1475a2ff6daf148b99fe3d83\",\"urls\":[\"bzz-raw://b7caec16e46f6ff36e2a0af21f258c827d22e60b409b2867d6d08f7bc39b0372\",\"dweb:/ipfs/QmXXeD95bzBR2wwF1b8duiofcYVbBqvWXMHnBrwRo5kNEL\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/Ilendingpool.sol\":{\"keccak256\":\"0x4733c4f1ece9f9753a68c7fb07980b45ac34759b99645580105423474c496468\",\"urls\":[\"bzz-raw://18c4e33774b2264c4ddf86d35eed113d02d72a7abc84766d7bd86d5ef127df45\",\"dweb:/ipfs/QmYKDWvsHr2H9v1jnX7eRywFGpUbATqkNApm65FYEzgUfa\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5061021f806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80630261bf8b146100515780634314ed9d1461009b578063a955450a146100e5578063c671eea41461012f575b600080fd5b610059610179565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100a3610195565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100ed6101b1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101376101cd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600073398ec7346dcd622edc5ae82352f02be94c62d119905090565b6000736f5587e191c8b222f634c78111f97c4851663ba4905090565b6000739f4c5d8d9be360df36e67f52ae55c1b137b4d0c4905090565b6000736f5587e191c8b222f634c78111f97c4851663ba490509056fea2646970667358221220ac2166ac82c1fcd298927146f51c552bb4b5683fd4e150b544e7a877ead2b74f64736f6c63430006020033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80630261bf8b146100515780634314ed9d1461009b578063a955450a146100e5578063c671eea41461012f575b600080fd5b610059610179565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100a3610195565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100ed6101b1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101376101cd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600073398ec7346dcd622edc5ae82352f02be94c62d119905090565b6000736f5587e191c8b222f634c78111f97c4851663ba4905090565b6000739f4c5d8d9be360df36e67f52ae55c1b137b4d0c4905090565b6000736f5587e191c8b222f634c78111f97c4851663ba490509056fea2646970667358221220ac2166ac82c1fcd298927146f51c552bb4b5683fd4e150b544e7a877ead2b74f64736f6c63430006020033",
-  "sourceMap": "863:968:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;863:968:0;;;;;;;",
-  "deployedSourceMap": "863:968:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;863:968:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;953:143;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1606:222;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1162:128;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1357:131;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;953:143;1000:19;1046:42;1032:56;;953:143;:::o;1606:222::-;1654:17;1778:42;1766:54;;1606:222;:::o;1162:128::-;1204:14;1240:42;1231:51;;1162:128;:::o;1357:131::-;1400:15;1438:42;1428:52;;1357:131;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"pod\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"depositPod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/AavePool.sol\":\"InvestPoolTogether\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/AavePool.sol\":{\"keccak256\":\"0xecd1f993311809b8982c488155f4fecf0f19b5495caceac4856f80550ae0cd67\",\"urls\":[\"bzz-raw://f9136f0aba6bfe81bc6191913fc2688f7b2844e1ef53df731bb9a21830037e67\",\"dweb:/ipfs/QmV7uQg7Eg6DGrF59z5ekyRitp1NkgJWoR2XdoRVKa8AUU\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol\":{\"keccak256\":\"0xcdfdc2accb3dc12c6d58c6edf3e6d5239a3c6361290aff1115ad72a0e490a4f6\",\"urls\":[\"bzz-raw://467c6e66734225f86565abbe25e2e3e2fc2b9c59edf9835582f0d109c71ed413\",\"dweb:/ipfs/QmP9efZJmwTzPkA4ph3iVRmpjdnWUQTDwvJSS3EyiQJqUi\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IPod.sol\":{\"keccak256\":\"0x8cec3f250ed2c954c3e9f13cbffa9f004bf0477713a5d7c3da029f97290e9e7e\",\"urls\":[\"bzz-raw://a5444ed33ab6bd1a0c7ff5687a767651adcbd05aafaed2ec85a11f228e788338\",\"dweb:/ipfs/QmPfuiJRSxH1yZmjRgpdkUKEQY4kTT7p1uX7GzkCfGwJJv\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IPool.sol\":{\"keccak256\":\"0xf6af2f7e5a7625c37272d0be7b5c0db8e8c9271f1475a2ff6daf148b99fe3d83\",\"urls\":[\"bzz-raw://b7caec16e46f6ff36e2a0af21f258c827d22e60b409b2867d6d08f7bc39b0372\",\"dweb:/ipfs/QmXXeD95bzBR2wwF1b8duiofcYVbBqvWXMHnBrwRo5kNEL\"]},\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/Ilendingpool.sol\":{\"keccak256\":\"0x4733c4f1ece9f9753a68c7fb07980b45ac34759b99645580105423474c496468\",\"urls\":[\"bzz-raw://18c4e33774b2264c4ddf86d35eed113d02d72a7abc84766d7bd86d5ef127df45\",\"dweb:/ipfs/QmYKDWvsHr2H9v1jnX7eRywFGpUbATqkNApm65FYEzgUfa\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610228806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c806342b2293e14610030575b600080fd5b6101136004803603606081101561004657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019064010000000081111561008d57600080fd5b82018360208201111561009f57600080fd5b803590602001918460018302840111640100000000831117156100c157600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610115565b005b8273ffffffffffffffffffffffffffffffffffffffff16635d30351983836040518363ffffffff1660e01b81526004018083815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561018857808201518184015260208101905061016d565b50505050905090810190601f1680156101b55780820380516001836020036101000a031916815260200191505b509350505050600060405180830381600087803b1580156101d557600080fd5b505af11580156101e9573d6000803e3d6000fd5b5050505050505056fea264697066735822122072387ff544ab7cbf2831ba687dc011cdad89653d820e61ca265d475d435a074864736f6c63430006020033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c806342b2293e14610030575b600080fd5b6101136004803603606081101561004657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019064010000000081111561008d57600080fd5b82018360208201111561009f57600080fd5b803590602001918460018302840111640100000000831117156100c157600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610115565b005b8273ffffffffffffffffffffffffffffffffffffffff16635d30351983836040518363ffffffff1660e01b81526004018083815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561018857808201518184015260208101905061016d565b50505050905090810190601f1680156101b55780820380516001836020036101000a031916815260200191505b509350505050600060405180830381600087803b1580156101d557600080fd5b505af11580156101e9573d6000803e3d6000fd5b5050505050505056fea264697066735822122072387ff544ab7cbf2831ba687dc011cdad89653d820e61ca265d475d435a074864736f6c63430006020033",
+  "sourceMap": "4473:169:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4473:169:0;;;;;;;",
+  "deployedSourceMap": "4473:169:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4473:169:0;;;;;;;;;;;;;;;;;;;4509:130;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;4509:130:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;4509:130:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;4509:130:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;4509:130:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;4509:130:0;;;;;;;;;;;;;;;:::i;:::-;;;4605:3;4592:25;;;4618:6;4626:4;4592:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;4592:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4592:39:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;4592:39:0;;;;4509:130;;;:::o",
   "source": "pragma solidity ^0.6.0;\r\n\r\nimport \"./interfaces/IPod.sol\";\r\nimport \"./interfaces/IPool.sol\";\r\nimport \"./interfaces/Ilendingpool.sol\";\r\nimport \"./interfaces/IAtoken.sol\";\r\n\r\ncontract DSMath {\r\n\r\n    function add(uint x, uint y) internal pure returns (uint z) {\r\n        require((z = x + y) >= x, \"math-not-safe\");\r\n    }\r\n\r\n    function sub(uint x, uint y) internal pure returns (uint z) {\r\n        z = x - y <= x ? x - y : 0;\r\n    }\r\n\r\n    function mul(uint x, uint y) internal pure returns (uint z) {\r\n        require(y == 0 || (z = x * y) / y == x, \"math-not-safe\");\r\n    }\r\n\r\n    uint constant WAD = 10 ** 18;\r\n\r\n    function wmul(uint x, uint y) internal pure returns (uint z) {\r\n        z = add(mul(x, y), WAD / 2) / WAD;\r\n    }\r\n\r\n    function wdiv(uint x, uint y) internal pure returns (uint z) {\r\n        z = add(mul(x, WAD), y / 2) / y;\r\n    }\r\n\r\n}\r\n\r\n\r\ncontract Helper is DSMath {\r\n     /**\r\n     * @dev get Lending Pool address\r\n     */\r\n    function getLendingPool() public pure returns (address lendingpool) {\r\n        lendingpool = 0x398eC7346DcD622eDc5ae82352F02bE94C62d119;\r\n    }\r\n    /**\r\n     * @dev get dai pod contract address\r\n     */\r\n    function getDaiPod() public pure returns (address daiPod) {\r\n        daiPod = 0x9F4C5D8d9BE360DF36E67F52aE55C1B137B4d0C4;\r\n    }\r\n    /**\r\n     * @dev get usdc pod contract address\r\n     */\r\n    function getUsdcPod() public pure returns (address usdcPod) {\r\n        usdcPod = 0x6F5587E191C8b222F634C78111F97c4851663ba4;\r\n    }\r\n     /**\r\n     * @dev get intermediatecontract contract address to which we will redirect interest to\r\n     */\r\n    function getIntermediate() public pure returns (address secondary) {\r\n        // dummy address used will have to deploy and replace the actual address\r\n        secondary = 0x6F5587E191C8b222F634C78111F97c4851663ba4;\r\n    }\r\n}\r\n\r\n\r\ninterface IERC20 {\r\n    /**\r\n     * @dev Returns the amount of tokens in existence.\r\n     */\r\n    function totalSupply() external view returns (uint256);\r\n\r\n    /**\r\n     * @dev Returns the amount of tokens owned by `account`.\r\n     */\r\n    function balanceOf(address account) external view returns (uint256);\r\n\r\n    /**\r\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\r\n     *\r\n     * Returns a boolean value indicating whether the operation succeeded.\r\n     *\r\n     * Emits a {Transfer} event.\r\n     */\r\n    function transfer(address recipient, uint256 amount) external returns (bool);\r\n\r\n    /**\r\n     * @dev Returns the remaining number of tokens that `spender` will be\r\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\r\n     * zero by default.\r\n     *\r\n     * This value changes when {approve} or {transferFrom} are called.\r\n     */\r\n    function allowance(address owner, address spender) external view returns (uint256);\r\n\r\n    /**\r\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\r\n     *\r\n     * Returns a boolean value indicating whether the operation succeeded.\r\n     *\r\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\r\n     * that someone may use both the old and the new allowance by unfortunate\r\n     * transaction ordering. One possible solution to mitigate this race\r\n     * condition is to first reduce the spender's allowance to 0 and set the\r\n     * desired value afterwards:\r\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\r\n     *\r\n     * Emits an {Approval} event.\r\n     */\r\n    function approve(address spender, uint amount) external returns (bool);\r\n\r\n    /**\r\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\r\n     * allowance mechanism. `amount` is then deducted from the caller's\r\n     * allowance.\r\n     *\r\n     * Returns a boolean value indicating whether the operation succeeded.\r\n     *\r\n     * Emits a {Transfer} event.\r\n     */\r\n    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);\r\n\r\n    /**\r\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\r\n     * another (`to`).\r\n     *\r\n     * Note that `value` may be zero.\r\n     */\r\n    event Transfer(address indexed from, address indexed to, uint256 value);\r\n\r\n    /**\r\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\r\n     * a call to {approve}. `value` is the new allowance.\r\n     */\r\n    event Approval(address indexed owner, address indexed spender, uint256 value);\r\n}\r\n\r\ncontract InvestPoolTogether  {\r\n    function depositPod(address pod, uint amount, bytes memory data) public {\r\n        PodInterface(pod).deposit(amount, data);\r\n    }\r\n}\r\n\r\ncontract AavePool is InvestPoolTogether, Helper {\r\n     /**\r\n     * @dev Pool Together Pod Entering Functionality through Redirecting Interest from Aave\r\n     * @param token - token to deposit\r\n     * @param depositAmt - amount to deposit on AAVE\r\n     */\r\n    function investInPod(\r\n        address token,\r\n        uint depositAmt,\r\n        address pod,\r\n        bytes memory data\r\n        ) public\r\n        returns(bool)\r\n        {\r\n            // Depositing Token on Aave to get AToken\r\n            LendingPoolInterface(getLendingPool()).deposit.value(0)(token, depositAmt, 0);\r\n            // Fetching the ATOKEN Address from the reserve address\r\n            (, , , , , , , , , , , address atoken,) = LendingPoolInterface(getLendingPool()).getReserveData(msg.sender);\r\n            // Redirtecting Interest to Enter into a Pool\r\n            // Right Now Using Using a sample address in getIntermediate but we will basically first deploy InvestPoolTogether and put that address in there\r\n            ATokenInterface(atoken).redirectInterestStream(getIntermediate());\r\n            depositPod(pod, depositAmt, data);\r\n            return true;\r\n        }\r\n}\r\n",
   "sourcePath": "C:\\Users\\lazypuppet\\ethereum projects\\snaketh4x0r\\AAVE-Pool-Together\\ethereum\\contracts\\AavePool.sol",
   "ast": {
@@ -8823,22 +8794,9 @@
   },
   "networks": {},
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-21T08:32:28.350Z",
+  "updatedAt": "2020-05-21T08:32:28.492Z",
   "devdoc": {
-    "methods": {
-      "getDaiPod()": {
-        "details": "get dai pod contract address"
-      },
-      "getIntermediate()": {
-        "details": "get intermediatecontract contract address to which we will redirect interest to"
-      },
-      "getLendingPool()": {
-        "details": "get Lending Pool address"
-      },
-      "getUsdcPod()": {
-        "details": "get usdc pod contract address"
-      }
-    }
+    "methods": {}
   },
   "userdoc": {
     "methods": {}

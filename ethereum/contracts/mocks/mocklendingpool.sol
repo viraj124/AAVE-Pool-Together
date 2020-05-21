@@ -6,6 +6,21 @@ import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 contract mocklendingpool is ERC20 {
 
      IERC20 public underlyingtokenaddress;
+	 
+	 //just useless Returns
+     uint256 totalLiquidity = 1000000;
+     uint256 availableLiquidity = 100000;
+     uint256 totalBorrowsStable = 100000;
+     uint256 totalBorrowsVariable = 100000;
+     uint256 liquidityRate = 100000;
+     uint256 variableBorrowRate = 100000;
+     uint256 stableBorrowRate = 100000;
+     uint256 averageStableBorrowRate = 100000;
+     uint256 utilizationRate = 100000;
+     uint256 liquidityIndex = 100000;
+     uint256 variableBorrowIndex = 100000;
+     address aTokenAddress = 0x6F5587E191C8b222F634C78111F97c4851663ba4;
+     uint40 lastUpdateTimestamp = 100;
 
      constructor(IERC20 _underlyingtokenaddress) ERC20("adai", "adai") public {
        underlyingtokenaddress = _underlyingtokenaddress;
@@ -26,20 +41,6 @@ contract mocklendingpool is ERC20 {
        address,
        uint40
        ) {
-     //just useless Returns
-     uint256 totalLiquidity = 1000000;
-     uint256 availableLiquidity = 100000;
-     uint256 totalBorrowsStable = 100000;
-     uint256 totalBorrowsVariable = 100000;
-     uint256 liquidityRate = 100000;
-     uint256 variableBorrowRate = 100000;
-     uint256 stableBorrowRate = 100000;
-     uint256 averageStableBorrowRate = 100000;
-     uint256 utilizationRate = 100000;
-     uint256 liquidityIndex = 100000;
-     uint256 variableBorrowIndex = 100000;
-     address aTokenAddress = 0x6F5587E191C8b222F634C78111F97c4851663ba4;
-     uint40 lastUpdateTimestamp = 100;
             return (
            totalLiquidity,
            availableLiquidity,
