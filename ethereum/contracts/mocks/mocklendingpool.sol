@@ -31,7 +31,6 @@ contract mocklendingpool is ERC20 {
      uint256 availableLiquidity = 100000;
      uint256 totalBorrowsStable = 100000;
      uint256 totalBorrowsVariable = 100000;
-     uint256 totalBorrowsVariable = 100000;
      uint256 liquidityRate = 100000;
      uint256 variableBorrowRate = 100000;
      uint256 stableBorrowRate = 100000;
@@ -70,6 +69,6 @@ contract mocklendingpool is ERC20 {
         uint256 interest = 1000;
         _mint(msg.sender,_amount);
         _mint(address(this),interest);
-        _transfer(_reserve,interest);
+        transfer(_reserve,interest);
       }
 }

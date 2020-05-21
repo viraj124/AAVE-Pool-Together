@@ -1,6 +1,6 @@
 pragma solidity ^0.6.0;
 
-contract PoolInterface {
+interface PoolInterface {
     // For Checking the winner
      function getDraw(uint256 _drawId) external view returns (
      uint256 feeFraction,

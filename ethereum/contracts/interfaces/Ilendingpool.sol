@@ -1,6 +1,6 @@
 pragma solidity ^0.6.0;
 
-contract LendingPoolInterface {
+interface LendingPoolInterface {
      // Deposit
      function deposit(address _reserve, uint256 _amount, uint16 _referralCode) external payable;
 
