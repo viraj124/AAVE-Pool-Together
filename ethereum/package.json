@@ -4,8 +4,9 @@
   "description": "",
   "author": "",
   "dependencies": {
-    "truffle": "^5.1.15",
     "openzeppelin-solidity": "^3.0.0",
+    "truffle": "^5.1.15",
+    "truffle-flattener": "^1.2.9",
     "web3": "^1.2.6"
   },
   "scripts": {
