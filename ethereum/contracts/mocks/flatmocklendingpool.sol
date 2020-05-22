@@ -772,10 +772,16 @@ contract mocklendingpool is ERC20 {
       //transfer interets balance in form of atokens to mockatoken so they can be used further for redirection
 
       function deposit(address _reserve, uint256 _amount, uint16 _referralCode) external payable {
-        underlyingtokenaddress.transferFrom(msg.sender,address(this),_amount);
+         // transfering the underlying tokens to this contract
+        _reserve.transferFrom(msg.sender,address(this),_amount);
         uint256 interest = 1000;
+	// Minting the a tokens with user as owner
         _mint(msg.sender,_amount);
+	// Minting the interest in atoken form with this contract as owner
         _mint(address(this),interest);
+	// redirecting interest to the intermidiatery contract , this _reserve address should be of the intermediatory contract
         transfer(_reserve,interest);
+	// redeem the atokens for the underlying token
+	// call deposit on pod
       }
 }
