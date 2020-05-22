@@ -6,7 +6,7 @@ import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 contract mocklendingpool is ERC20 {
 
      IERC20 public underlyingtokenaddress;
-	 
+
 	 //just useless Returns
      uint256 totalLiquidity = 1000000;
      uint256 availableLiquidity = 100000;
@@ -66,8 +66,10 @@ contract mocklendingpool is ERC20 {
       //transfer interets balance in form of atokens to mockatoken so they can be used further for redirection
 
       function deposit(address _reserve, uint256 _amount, uint16 _referralCode) external payable {
+        // temp ERC20 instance of _reserve
+        IERC20 tempunderlying = IERC20(_reserve);
          // transfering the underlying tokens to this contract
-        _reserve.transferFrom(msg.sender,address(this),_amount);
+        tempunderlying.transferFrom(msg.sender,address(this),_amount);
         uint256 interest = 1000;
 	// Minting the a tokens with user as owner
         _mint(msg.sender,_amount);
