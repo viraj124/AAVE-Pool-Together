@@ -21,7 +21,12 @@ contract mocklendingpool is ERC20 {
      uint256 variableBorrowIndex = 100000;
      address aTokenAddress = 0x6F5587E191C8b222F634C78111F97c4851663ba4;
      uint40 lastUpdateTimestamp = 100;
-
+     
+	 
+	 
+	 //underlyingtoken address is contract address of underlyingtoken(dai)
+	 //constructor creates adai which is atoken in constructor
+	 //ERC(name,symbol) is required adai is name and adai is symbol here
      constructor(IERC20 _underlyingtokenaddress) ERC20("adai", "adai") public {
        underlyingtokenaddress = _underlyingtokenaddress;
      }
