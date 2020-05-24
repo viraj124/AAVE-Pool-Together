@@ -652,7 +652,8 @@ contract AavePool is Helper {
     address underlyingAsset;
     constructor(address _atoken) public {
         aToken = _atoken;
-        underlyingAsset = ERC20(aToken).underlyingAsset();
+        // Compound Kovan DAI
+        underlyingAsset = 0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa;
     }
     /**
      * @dev Invest in Pod throough your atokens
@@ -660,21 +661,37 @@ contract AavePool is Helper {
      */
     function invest(uint256 _amount) public returns(bool)
         {
-          ERC20(aToken).transfer(address(0), _amount);
-          underlyingAsset._mint(address(this), _amount);
+          // Calling Redeem in Mock AToken
+          ERC20(aToken).redeem(_amount);
+
+          // Bytes Payload for deposit
           bytes storage _data = bytes("Depositing to Pod");
+          
+          // Approve Pod
+          ERC20(underlyingAsset).approve(getPod(), _amount);
+          
+          // Deposit in Pod
           PodInterface(getPod()).deposit(_amount, _data);
+
           return true;
         }
 
     function redeem(uint256 _amount) public returns(bool)
     {
+        ERC20(underlyingAsset).approve(getPod(), _amount);
+        
+        // Redeeming Underlying Asset for Pod Shares
         PodInterface(getPod()).redeem(_amount);
+        
+        // Redeeming Intesrest Accumalated
+        ERC20(aToken).redeem(ERC20(aToken).balanceOf(address(this)));
+        
+        // Getting total Balance of Underlying Asset(Pod share + interest)
         uint256 underlyingBalance = ERC20(underlyingAsset).balanceOf(address(this));
+        
+        // Trnasfer to user
         ERC20(underlyingAsset).transfer(msg.sender, _amount);
-        uint256 interestAccumalated = ERC20(aToken).balanceOf(address(this));
-        ERC20(aToken).transfer(address(0), interestAccumalated);
-        ERC20(underlyingAsset)._mint(msg.sender, interestAccumalated);
+
         return true;
     }
 }
