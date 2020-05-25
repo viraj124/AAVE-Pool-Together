@@ -629,7 +629,9 @@ contract ERC20 is Context, IERC20 {
 
 // File: contracts\mocks\mocklendingpool.sol
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.6.0;
+
+
 
 contract mocklendingpool is ERC20 {
 
@@ -649,7 +651,12 @@ contract mocklendingpool is ERC20 {
      uint256 variableBorrowIndex = 100000;
      address aTokenAddress = 0x6F5587E191C8b222F634C78111F97c4851663ba4;
      uint40 lastUpdateTimestamp = 100;
-
+     
+	 
+	 
+	 //underlyingtoken address is contract address of underlyingtoken(dai)
+	 //constructor creates adai which is atoken in constructor
+	 //ERC(name,symbol) is required adai is name and adai is symbol here
      constructor(IERC20 _underlyingtokenaddress) ERC20("adai", "adai") public {
        underlyingtokenaddress = _underlyingtokenaddress;
      }
@@ -693,19 +700,24 @@ contract mocklendingpool is ERC20 {
       //create interest balance out of thin air
       //transfer interets balance in form of atokens to mockatoken so they can be used further for redirection
 
-      function deposit(address _reserve, uint256 _amount, uint16 _referralCode) external payable {
-        // temp ERC20 instance of _reserve
-        IERC20 tempunderlying = IERC20(_reserve);
-         // transfering the underlying tokens to this contract
-        tempunderlying.transferFrom(msg.sender,address(this),_amount);
-        uint256 interest = 1000;
-	// Minting the a tokens with user as owner
+      function deposit(address _atoken, uint256 _amount, uint16 _referralCode) external payable returns(bool) {
+        // transfering the underlying tokens to this contract
+        underlyingtokenaddress.approve(address(this), _amount);
+
+        underlyingtokenaddress.transferFrom(msg.sender, _atoken, _amount);
+        
+        // Creating interest out of thin air
+        uint256 interest = _amount.div(2);
+        
+	    // Minting the a tokens with user as owner
         _mint(msg.sender,_amount);
-	// Minting the interest in atoken form with this contract as owner
+
+	    // Minting the interest in atoken form with this contract as owner
         _mint(address(this),interest);
-	// redirecting interest to the intermidiatery contract , this _reserve address should be of the intermediatory contract
-        transfer(_reserve,interest);
-	// redeem the atokens for the underlying token
-	// call deposit on pod
+
+	    // redirecting interest to the intermidiatery contract , this _reserve address should be of the intermediatory contract
+        transfer(_atoken, interest);
+
+        return true;
       }
 }
