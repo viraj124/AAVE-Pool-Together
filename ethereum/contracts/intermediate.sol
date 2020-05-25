@@ -6,6 +6,9 @@ interface PodInterface {
 
      // Borrow
      function redeem(uint256 amount, bytes calldata data) external;
+     
+     // Balance Of underlyingAsset
+     function balanceOfUnderlying(address user) external view returns (uint256);
 }
 
 
@@ -18,6 +21,9 @@ contract Helper {
     }
 }
 
+/**
+ * @dev ATOKEN Interface.
+ */
 interface AToken {
     function balanceOf(address account) external view returns (uint256);
 
@@ -655,11 +661,12 @@ contract AavePool is Helper {
     
     using SafeMath for uint256;
     address public aToken;
+    address public lendingPool;
     address public underlyingAsset;
-    uint256 poolAmount;
-    
-    constructor(address _atoken) public {
+
+    constructor(address _atoken, address _lendingPool) public {
         aToken = _atoken;
+        lendingPool = _lendingPool;
         // Compound Kovan DAI
         underlyingAsset = 0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa;
     }
@@ -669,35 +676,39 @@ contract AavePool is Helper {
     function invest() public returns(bool)
         {
           // Calling Redeem in Mock AToken
-          AToken(aToken).redeem(AToken(aToken).balanceOf(address(this)));
+          ERC20(lendingPool).approve(aToken, ERC20(lendingPool).balanceOf(address(this)));
+          AToken(aToken).redeem(ERC20(lendingPool).balanceOf(address(this)));
 
           // Bytes Payload for deposit
           bytes memory _data = bytes("Depositing to Pod");
           
           // Approve Pod
-          ERC20(underlyingAsset).approve(getPod(), AToken(aToken).balanceOf(address(this)));
+          ERC20(underlyingAsset).approve(getPod(), ERC20(underlyingAsset).balanceOf(address(this)));
           
           // Deposit in Pod
-          poolAmount = AToken(aToken).balanceOf(address(this));
-          PodInterface(getPod()).deposit(poolAmount, _data);
+          PodInterface(getPod()).deposit(ERC20(underlyingAsset).balanceOf(address(this)), _data);
 
           return true;
         }
 
     function redeem() public returns(bool)
-    {   require(poolAmount > 0, "Amount to be redeemed from pod should be greater thank 0");
-        ERC20(underlyingAsset).approve(getPod(), poolAmount);
+    {
+        // Getting Underlying Balnce from the Pod
+        uint256 underlyingBalance = PodInterface(getPod()).balanceOfUnderlying(msg.sender);
+        
+        require(underlyingBalance != 0, "Amount to be redeemed should be greater thank 0");
+        ERC20(underlyingAsset).approve(getPod(), underlyingBalance);
         
         // Redeeming Underlying Asset for Pod Shares
         bytes memory _data = bytes("Redeeming from Pod");
 
-        PodInterface(getPod()).redeem(poolAmount, _data);
+        PodInterface(getPod()).redeem(underlyingBalance, _data);
         
         // Getting total Balance of Underlying Asset(Pod share + interest)
-        uint256 underlyingBalance = ERC20(underlyingAsset).balanceOf(address(this));
+        uint256 underlyingBalanceInPod = ERC20(underlyingAsset).balanceOf(address(this));
 
         // Trnasfer to user
-        ERC20(underlyingAsset).transfer(msg.sender, poolAmount);
+        ERC20(underlyingAsset).transfer(msg.sender, underlyingBalanceInPod);
 
         return true;
     }
