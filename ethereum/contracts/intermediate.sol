@@ -1,9 +1,9 @@
 pragma solidity ^0.6.0;
 
-import "./Initializable.sol";
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "openzeppelin-solidity/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/IERC20.sol";
  
 
 interface PodInterface {
@@ -35,19 +35,24 @@ interface AToken {
     function redeem(uint256 _amount) external;
 }
 
-contract AavePool is Helper, Initializable, Ownable {
+contract AavePool is Helper, Initializable, OwnableUpgradeSafe {
     
     using SafeMath for uint256;
     address public aToken = 0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa;
     address public lendingPool = 0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa;
     address public underlyingAsset= 0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa;
 	
+	address public admin;
+	uint256 public version;
+	
 	event Initialized(address indexed thisAddress);
 
     function initialize(address _recipient, address _admin) public initializer {
     emit Initialized(address(this));
-    address admin = _admin;
-	Ownable(_recipient);
+	OwnableUpgradeSafe.__Ownable_init();
+    OwnableUpgradeSafe.transferOwnership(_recipient);
+	admin = _admin;
+	version = 1;
     }
 		  
     /**
@@ -56,17 +61,17 @@ contract AavePool is Helper, Initializable, Ownable {
     function invest() public returns(bool)
         {
           // Calling Redeem in Mock AToken
-          ERC20(lendingPool).approve(aToken, ERC20(lendingPool).balanceOf(address(this)));
-          AToken(aToken).redeem(ERC20(lendingPool).balanceOf(address(this)));
+          IERC20(lendingPool).approve(aToken, IERC20(lendingPool).balanceOf(address(this)));
+          AToken(aToken).redeem(IERC20(lendingPool).balanceOf(address(this)));
 
           // Bytes Payload for deposit
           bytes memory _data = bytes("Depositing to Pod");
           
           // Approve Pod
-          ERC20(underlyingAsset).approve(getPod(), ERC20(underlyingAsset).balanceOf(address(this)));
+          IERC20(underlyingAsset).approve(getPod(), IERC20(underlyingAsset).balanceOf(address(this)));
           
           // Deposit in Pod
-          PodInterface(getPod()).deposit(ERC20(underlyingAsset).balanceOf(address(this)), _data);
+          PodInterface(getPod()).deposit(IERC20(underlyingAsset).balanceOf(address(this)), _data);
 
           return true;
         }
@@ -77,7 +82,7 @@ contract AavePool is Helper, Initializable, Ownable {
         uint256 underlyingBalance = PodInterface(getPod()).balanceOfUnderlying(msg.sender);
         
         require(underlyingBalance != 0, "Amount to be redeemed should be greater thank 0");
-        ERC20(underlyingAsset).approve(getPod(), underlyingBalance);
+        IERC20(underlyingAsset).approve(getPod(), underlyingBalance);
         
         // Redeeming Underlying Asset for Pod Shares
         bytes memory _data = bytes("Redeeming from Pod");
@@ -85,10 +90,10 @@ contract AavePool is Helper, Initializable, Ownable {
         PodInterface(getPod()).redeem(underlyingBalance, _data);
         
         // Getting total Balance of Underlying Asset(Pod share + interest)
-        uint256 underlyingBalanceInPod = ERC20(underlyingAsset).balanceOf(address(this));
+        uint256 underlyingBalanceInPod = IERC20(underlyingAsset).balanceOf(address(this));
 
         // Trnasfer to user
-        ERC20(underlyingAsset).transfer(msg.sender, underlyingBalanceInPod);
+        IERC20(underlyingAsset).transfer(msg.sender, underlyingBalanceInPod);
 
         return true;
     }
