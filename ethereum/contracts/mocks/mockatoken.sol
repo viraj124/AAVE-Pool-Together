@@ -18,7 +18,7 @@ contract mockatoken {
 	 //first approve adai on this contract just as normal adai approval
 	 function redeem(uint256 _amount) external {
 	 atokenaddress.transferFrom(msg.sender,address(this),_amount);
-	 IERC20.transfer(msg.sender,_amount);
+	 underlying.transfer(msg.sender,_amount);
 	 }
 	 
      //mocking aave atoken redirectInterestStream function but transfers balance of this contract to _to
