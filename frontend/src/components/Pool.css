@@ -1,0 +1,75 @@
+
+.title{
+  font-weight: bold;
+  color: white;  
+  font-size:30px;
+}
+  .App-logo{
+    position: absolute;
+    left: 500px;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .App-logo1{
+    position: absolute;
+    left: 135px;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+
+  }
+
+  .App-logo2{
+    position: absolute;
+    left: 260px;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .amount{
+    margin-top: 300px;
+  }
+
+  #container{
+    height: 500px;
+    width: 350px;
+    padding:50px;
+    background-color:lightgrey;
+    border-radius: 10px;
+  }
+
+  #container1{
+  
+    height: 500px;
+  width: 350px;
+    padding:50px;
+  background-color:lightgrey;
+  border-radius: 10px;
+  margin: 10px
+}
+
+button{
+  margin-top: 10px;
+  background-color:lightskyblue;
+  color:white 
+}
+
+#container2{ 
+  padding:50px;
+  height: 500px;
+  width: 350px;
+  background-color:lightgrey;
+  border-radius: 10px;
+}
+
+
+.button4 {
+  margin-top: 30px;
+  width: 300px;
+}
+
+
+
