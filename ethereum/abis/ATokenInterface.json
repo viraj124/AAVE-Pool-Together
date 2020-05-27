@@ -13,27 +13,53 @@
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "redeem",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"redirectInterestStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol\":\"ATokenInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol\":{\"keccak256\":\"0xcdfdc2accb3dc12c6d58c6edf3e6d5239a3c6361290aff1115ad72a0e490a4f6\",\"urls\":[\"bzz-raw://467c6e66734225f86565abbe25e2e3e2fc2b9c59edf9835582f0d109c71ed413\",\"dweb:/ipfs/QmP9efZJmwTzPkA4ph3iVRmpjdnWUQTDwvJSS3EyiQJqUi\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"redeem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"redirectInterestStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/lazypuppet/ethereum/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol\":\"ATokenInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/lazypuppet/ethereum/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol\":{\"keccak256\":\"0x41506a4e2f7b83db467992ce7a4c106fce3d8b02c4e45cb3f5853b4670888cab\",\"urls\":[\"bzz-raw://597255c36858d483fa00038e90ebd9ecb99336044f59ee2cb18a2619d4dbbaf2\",\"dweb:/ipfs/Qme9RFRs7teNR2YizNdgtRyrZNSyb4LJftH993Y3K2z1gj\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.6.0;\r\n\r\ninterface ATokenInterface {\r\n     function redirectInterestStream(address _to) external;\r\n}\r\n",
-  "sourcePath": "C:\\Users\\lazypuppet\\ethereum projects\\snaketh4x0r\\AAVE-Pool-Together\\ethereum\\contracts\\interfaces\\IAtoken.sol",
+  "source": "pragma solidity ^0.6.0;\r\n\r\ninterface ATokenInterface {\r\n     function redirectInterestStream(address _to) external;\r\n     function balanceOf(address _user) external;\r\n     function redeem(uint256 _amount) external;\r\n}\r\n",
+  "sourcePath": "C:\\Users\\lazypuppet\\ethereum\\snaketh4x0r\\AAVE-Pool-Together\\ethereum\\contracts\\interfaces\\IAtoken.sol",
   "ast": {
-    "absolutePath": "/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol",
+    "absolutePath": "/C/Users/lazypuppet/ethereum/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol",
     "exportedSymbols": {
       "ATokenInterface": [
-        385
+        1615
       ]
     },
-    "id": 386,
+    "id": 1616,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 379,
+        "id": 1599,
         "literals": [
           "solidity",
           "^",
@@ -41,7 +67,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:2"
+        "src": "0:23:6"
       },
       {
         "abstract": false,
@@ -50,9 +76,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 385,
+        "id": 1615,
         "linearizedBaseContracts": [
-          385
+          1615
         ],
         "name": "ATokenInterface",
         "nodeType": "ContractDefinition",
@@ -61,7 +87,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "0e49072d",
-            "id": 384,
+            "id": 1604,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -69,17 +95,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 382,
+              "id": 1602,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 381,
+                  "id": 1601,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 384,
-                  "src": "93:11:2",
+                  "scope": 1604,
+                  "src": "93:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -87,10 +113,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 380,
+                    "id": 1600,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "93:7:2",
+                    "src": "93:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -101,39 +127,154 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "92:13:2"
+              "src": "92:13:6"
             },
             "returnParameters": {
-              "id": 383,
+              "id": 1603,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "114:0:2"
+              "src": "114:0:6"
             },
-            "scope": 385,
-            "src": "61:54:2",
+            "scope": 1615,
+            "src": "61:54:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "70a08231",
+            "id": 1609,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1607,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1606,
+                  "name": "_user",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1609,
+                  "src": "141:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1605,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "141:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "140:15:6"
+            },
+            "returnParameters": {
+              "id": 1608,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "164:0:6"
+            },
+            "scope": 1615,
+            "src": "122:43:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "db006a75",
+            "id": 1614,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "redeem",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1612,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1611,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1614,
+                  "src": "188:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1610,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "188:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "187:17:6"
+            },
+            "returnParameters": {
+              "id": 1613,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "213:0:6"
+            },
+            "scope": 1615,
+            "src": "172:42:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 386,
-        "src": "27:91:2"
+        "scope": 1616,
+        "src": "27:190:6"
       }
     ],
-    "src": "0:120:2"
+    "src": "0:219:6"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/lazypuppet/ethereum projects/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol",
+    "absolutePath": "/C/Users/lazypuppet/ethereum/snaketh4x0r/AAVE-Pool-Together/ethereum/contracts/interfaces/IAtoken.sol",
     "exportedSymbols": {
       "ATokenInterface": [
-        385
+        1615
       ]
     },
-    "id": 386,
+    "id": 1616,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 379,
+        "id": 1599,
         "literals": [
           "solidity",
           "^",
@@ -141,7 +282,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:2"
+        "src": "0:23:6"
       },
       {
         "abstract": false,
@@ -150,9 +291,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 385,
+        "id": 1615,
         "linearizedBaseContracts": [
-          385
+          1615
         ],
         "name": "ATokenInterface",
         "nodeType": "ContractDefinition",
@@ -161,7 +302,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "0e49072d",
-            "id": 384,
+            "id": 1604,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -169,17 +310,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 382,
+              "id": 1602,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 381,
+                  "id": 1601,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 384,
-                  "src": "93:11:2",
+                  "scope": 1604,
+                  "src": "93:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -187,10 +328,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 380,
+                    "id": 1600,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "93:7:2",
+                    "src": "93:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -201,26 +342,141 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "92:13:2"
+              "src": "92:13:6"
             },
             "returnParameters": {
-              "id": 383,
+              "id": 1603,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "114:0:2"
+              "src": "114:0:6"
             },
-            "scope": 385,
-            "src": "61:54:2",
+            "scope": 1615,
+            "src": "61:54:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "70a08231",
+            "id": 1609,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1607,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1606,
+                  "name": "_user",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1609,
+                  "src": "141:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1605,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "141:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "140:15:6"
+            },
+            "returnParameters": {
+              "id": 1608,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "164:0:6"
+            },
+            "scope": 1615,
+            "src": "122:43:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "db006a75",
+            "id": 1614,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "redeem",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1612,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1611,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1614,
+                  "src": "188:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1610,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "188:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "187:17:6"
+            },
+            "returnParameters": {
+              "id": 1613,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "213:0:6"
+            },
+            "scope": 1615,
+            "src": "172:42:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 386,
-        "src": "27:91:2"
+        "scope": 1616,
+        "src": "27:190:6"
       }
     ],
-    "src": "0:120:2"
+    "src": "0:219:6"
   },
   "compiler": {
     "name": "solc",
@@ -228,7 +484,7 @@
   },
   "networks": {},
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-21T08:32:28.706Z",
+  "updatedAt": "2020-05-26T09:47:56.344Z",
   "devdoc": {
     "methods": {}
   },
