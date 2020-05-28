@@ -10,7 +10,21 @@ Ever heard of participating in a Pool Together Pool By Depositing on Aave sounds
 
 ## ScreenShots
 ![unknown (1)](https://user-images.githubusercontent.com/26670962/83074349-9e033800-a08f-11ea-8d1b-5a002a2c8a47.png)
-![unknown](https://user-images.githubusercontent.com/26670962/83074378-ac515400-a08f-11ea-8c25-08452e4c5aa0.png)
+
+![unknown](https://user-images.githubusercontent.com/26670962/83074378-ac515400-a08f-11ea-8c25-08452e4c5aa0.png
+
+![deposit](https://user-images.githubusercontent.com/26670962/83098108-5ac4bb80-a0c7-11ea-918b-7be030e87c41.png)
+Deposit Dai
+
+![redirectinterest](https://user-images.githubusercontent.com/26670962/83098176-80ea5b80-a0c7-11ea-8ca7-2ee5467d316e.png)
+Redirect Interest
+
+![invest](https://user-images.githubusercontent.com/26670962/83098242-ad9e7300-a0c7-11ea-89cc-d946dea8f713.png)
+Invest in Pod
+
+![redeem](https://user-images.githubusercontent.com/26670962/83098273-c73fba80-a0c7-11ea-9e55-dacec6804492.png)
+Redeem
+
 
 
 ## Note 
