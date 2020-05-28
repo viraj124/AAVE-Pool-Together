@@ -30,6 +30,9 @@ Redeem
 ## Note 
 Currently we are on Kovan testnet and support only Dai Pool, so you need to have (Compund Dai)[https://kovan.etherscan.io/address/0x4f96fe3b7a6cf9725f59d353f723c1bdb64ca6aa] with you
 
+## Important
+Please note that there were issue combining bith protocols while forking mainnet that we discussed with Pool Together Team so for Simplicity we have Mocked Aave Features that we required
+
 ## Steps to run the App
 Clone the repo
 Run npm install inside frontend & ethereum
