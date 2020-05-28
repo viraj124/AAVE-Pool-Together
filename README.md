@@ -11,7 +11,7 @@ Ever heard of participating in a Pool Together Pool By Depositing on Aave sounds
 ## ScreenShots
 ![unknown (1)](https://user-images.githubusercontent.com/26670962/83074349-9e033800-a08f-11ea-8d1b-5a002a2c8a47.png)
 
-![unknown](https://user-images.githubusercontent.com/26670962/83074378-ac515400-a08f-11ea-8c25-08452e4c5aa0.png
+![unknown](https://user-images.githubusercontent.com/26670962/83074378-ac515400-a08f-11ea-8c25-08452e4c5aa0.png)
 
 ![deposit](https://user-images.githubusercontent.com/26670962/83098108-5ac4bb80-a0c7-11ea-918b-7be030e87c41.png)
 Deposit Dai
